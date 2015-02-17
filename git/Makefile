@@ -546,7 +546,7 @@ ifndef PERL_PATH
 	PERL_PATH = /usr/bin/perl
 endif
 ifndef PYTHON_PATH
-	PYTHON_PATH = /usr/bin/python
+	PYTHON_PATH = /usr/bin/python2
 endif
 
 export PERL_PATH

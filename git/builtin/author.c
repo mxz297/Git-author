@@ -172,12 +172,15 @@ void get_head_sha1(unsigned char *sha1) {
     char hex[50];    
 
     f = fopen(".git/HEAD","r");  
-    fscanf(f, "%*s%s", branch);
-    fclose(f);
-
-    sprintf(fileName, ".git/%s", branch);
-    f = fopen(fileName, "r");
     fscanf(f, "%s", hex);
+    int headIsBranch = (fscanf(f, "%s", branch) != EOF);
+    fclose(f);
+    if (headIsBranch) {
+        sprintf(fileName, ".git/%s", branch);
+        f = fopen(fileName, "r");
+        fscanf(f, "%s", hex);
+        fclose(f);
+    }
 
     get_sha1_hex(hex, sha1);
 }
